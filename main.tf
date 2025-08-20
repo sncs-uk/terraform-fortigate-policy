@@ -12,7 +12,7 @@ terraform {
 }
 locals {
   vdom_policy_yaml = {
-    for vdom in var.vdoms : vdom => yamldecode(file("${var.config_path}/config/${vdom}/rules.yaml")) if fileexists("${var.config_path}/config/${vdom}/rules.yaml")
+    for vdom in var.vdoms : vdom => yamldecode(file("${var.config_path}/${vdom}/rules.yaml")) if fileexists("${var.config_path}/${vdom}/rules.yaml")
   }
 
 
