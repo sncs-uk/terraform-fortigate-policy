@@ -8,3 +8,9 @@ variable "config_path" {
   description = "Path to base configuration directory"
   type        = string
 }
+
+variable "default_comment" {
+  description = "Default comment to include in the rule"
+  type        = string
+  default     = "Terraform"
+}

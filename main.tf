@@ -34,7 +34,19 @@ resource "fortios_firewall_policy" "policy" {
   internet_service  = can(each.value.internet_service) ? "enable" : "disable"
   internet_service6 = can(each.value.internet_service6) ? "enable" : "disable"
   nat               = try(each.value.nat, "disable")
-  comments          = "Terraform"
+  comments          = try(each.value.comments, var.default_comment)
+
+  av_profile          = try(each.value.av_profile, null)
+  webfilter_profile   = try(each.value.webfilter_profile, null)
+  dnsfilter_profile   = try(each.value.dnsfilter_profile, null)
+  emailfilter_profile = try(each.value.emailfilter_profile, null)
+  dlp_profile         = try(each.value.dlp_profile, null)
+  spamfilter_profile  = try(each.value.spamfilter_profile, null)
+  file_filter_profile = try(each.value.file_filter_profile, null)
+  voip_profile        = try(each.value.voip_profile, null)
+  waf_profile         = try(each.value.waf_profile, null)
+  ssh_filter_profile  = try(each.value.ssh_filter_profile, null)
+  ssl_ssh_profile     = try(each.value.ssl_ssh_profile, null)
 
   dynamic "dstaddr" {
     for_each = { for dstaddr in try(each.value.dstaddr, []) : dstaddr => dstaddr }
