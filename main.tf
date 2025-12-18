@@ -4,7 +4,7 @@
  * This terraform module configures Policy on a firewall
  */
 terraform {
-  required_version = ">= v1.13.0"
+  required_version = ">= v1.11.0"
   required_providers {
     fortios = {
       source  = "fortinetdev/fortios"
